@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    git curl zsh fzf net-tools
+    git curl zsh fzf nettools
   ];
 
   services.openssh.enable = true;
