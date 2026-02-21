@@ -14,12 +14,25 @@
       url = "github:nlewo/comin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = 
-    { self, nixpkgs, ... }@inputs: {
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    let
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
+      nixosConfig = { modules ? [] }: nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [ ./common/default.nix ] ++ modules;
+      };
+    in {
     nixosConfigurations = {
-        template = nixosConfig { modules = [ inputs.comin.nixosModules.comin ./hosts/template/default.nix ]; };
+        template = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko ./hosts/template/disk-config.nix ./hosts/template/default.nix ]; };
         laptop = nixosConfig { modules = [ inputs.comin.nixosModules.comin ./hosts/laptop/default.nix ]; };
       };
     devShells = forAllSystems (pkgs: {
@@ -35,6 +48,5 @@
           '';
         };
       });
-  };
-  // import ./deploy.nix { inherit self inputs; };
+  } // import ./deploy.nix { inherit self inputs; };
 }
