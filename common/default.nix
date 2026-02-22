@@ -1,7 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   environment.systemPackages = with pkgs; [
-    git curl zsh fzf nettools
+    git curl zsh fzf nettools sops age
   ];
+
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+
+  sops.secrets."github_pat" = {
+    sopsFile = ../secrets/laptop.yaml;
+  };
 
   services.openssh.enable = true;
   programs.zsh.enable = true;
@@ -20,6 +26,7 @@
       name = "origin";
       url = "https://github.com/Mafyuh/nixos.git";
       branches.main.name = "main";
+      auth.access_token_path = config.sops.secrets."github_pat".path;
     }];
   };
 }

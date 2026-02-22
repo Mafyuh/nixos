@@ -1,0 +1,11 @@
+keys:
+  - &admin age18z6wevr8ze5azvq7nfty3l29s7887l8n5mefr64avhlthtr4uvnqw90nfs
+  # Age key derived from laptop SSH host key
+  - &laptop age1aee7tp00ae7vngf50jn2zd9h2ddmcyaenkv4w3vlgec5frmvrc8qg64423
+
+creation_rules:
+  - path_regex: secrets/.*\.yaml$
+    key_groups:
+      - age:
+          - *admin
+          - *laptop

@@ -32,7 +32,7 @@
       nixosConfig = { modules ? [] }: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
-        modules = [ ./common/default.nix ] ++ modules;
+        modules = [ ./common/default.nix inputs.sops-nix.nixosModules.sops ] ++ modules;
       };
     in {
     nixosConfigurations = {
@@ -46,6 +46,9 @@
             pkgs.deploy-rs
             pkgs.nvd
             pkgs.nix-output-monitor
+            pkgs.sops
+            pkgs.age
+            pkgs.ssh-to-age
           ];
           shellHook = ''
             echo "Nix Development Environment"
