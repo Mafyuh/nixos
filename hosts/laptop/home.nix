@@ -6,6 +6,10 @@
   home.packages = with pkgs; [
     wget
     steam
+    freelens-bin
+    kubernetes-helm
+    kubectl
+    fluxcd
     fzf
     termius
     vscode
