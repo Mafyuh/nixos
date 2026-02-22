@@ -9,6 +9,13 @@
     sopsFile = ../secrets/laptop.yaml;
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+  nix.settings.auto-optimise-store = true;
+
   services.openssh.enable = true;
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
