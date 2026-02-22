@@ -18,6 +18,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -33,7 +37,7 @@
     in {
     nixosConfigurations = {
         template = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko ./hosts/template/disk-config.nix ./hosts/template/default.nix ]; };
-        laptop = nixosConfig { modules = [ inputs.comin.nixosModules.comin ./hosts/laptop/default.nix ]; };
+        laptop = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko inputs.home-manager.nixosModules.home-manager ./hosts/laptop/disk-config.nix ./hosts/laptop/default.nix ]; };
       };
     devShells = forAllSystems (pkgs: {
         default = pkgs.mkShell {

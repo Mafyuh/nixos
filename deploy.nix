@@ -9,8 +9,8 @@ let
       magicRollback = true;
       sshOpts = [ ];
       remoteBuild = false;
-    } // cfg;
-  };
+    } // (builtins.removeAttrs cfg [ "hostname" ]);
+  } // (if cfg ? hostname then { hostname = cfg.hostname; } else {});
 in
 {
   deploy.nodes = {
@@ -19,6 +19,8 @@ in
      };
     laptop = deployConfig "laptop" "x86_64-linux" {
       remoteBuild = true;
+      hostname = "10.0.0.95";
+      sshOpts = [ "-i" "/home/mafyuh/.ssh/id_ed25519" ];
     };
   };
 }
