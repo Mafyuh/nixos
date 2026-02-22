@@ -9,6 +9,8 @@
     termius
     vscode
     brave
+    bottles
+    unityhub
     pay-respects
     fastfetch
     oh-my-posh
