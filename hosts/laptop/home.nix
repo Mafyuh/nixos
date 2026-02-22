@@ -5,6 +5,7 @@
 
   home.packages = with pkgs; [
     wget
+    steam
     fzf
     termius
     vscode
