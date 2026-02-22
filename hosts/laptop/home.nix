@@ -12,7 +12,14 @@
     pay-respects
     fastfetch
     oh-my-posh
+    nerd-fonts.fira-code
   ];
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts.monospace = [ "FiraCode Nerd Font Mono" ];
+    defaultFonts.sansSerif = [ "FiraCode Nerd Font" ];
+  };
 
   programs.zsh = {
     enable = true;
