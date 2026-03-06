@@ -2,6 +2,8 @@ keys:
   - &admin age18z6wevr8ze5azvq7nfty3l29s7887l8n5mefr64avhlthtr4uvnqw90nfs
   # Age key derived from laptop SSH host key
   - &laptop age1aee7tp00ae7vngf50jn2zd9h2ddmcyaenkv4w3vlgec5frmvrc8qg64423
+  # Age key derived from template SSH host key
+  - &template age1v9tajgxsj7zkauwf6p50qk3ngtlqspqr89cl83a6cfkd20835etq4frnmj
 
 creation_rules:
   - path_regex: secrets/.*\.yaml$
@@ -9,3 +11,4 @@ creation_rules:
       - age:
           - *admin
           - *laptop
+          - *template
