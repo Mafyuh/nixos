@@ -15,7 +15,9 @@ in
 {
   deploy.nodes = {
     template = deployConfig "template" "x86_64-linux" {
-         remoteBuild = true;
+        remoteBuild = true;
+        hostname = "10.0.0.194";
+        sshOpts = [ "-i" "/home/mafyuh/.ssh/id_ed25519" ];
      };
     laptop = deployConfig "laptop" "x86_64-linux" {
       remoteBuild = true;

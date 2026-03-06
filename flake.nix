@@ -36,7 +36,7 @@
       };
     in {
     nixosConfigurations = {
-        template = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko ./hosts/template/disk-config.nix ./hosts/template/default.nix ]; };
+        template = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko inputs.home-manager.nixosModules.home-manager ./hosts/template/disk-config.nix ./hosts/template/default.nix ]; };
         laptop = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko inputs.home-manager.nixosModules.home-manager ./hosts/laptop/disk-config.nix ./hosts/laptop/default.nix ]; };
       };
     devShells = forAllSystems (pkgs: {

@@ -7,5 +7,7 @@
     nettools
     sops
     age
+    oh-my-posh
+    fastfetch
   ];
 }

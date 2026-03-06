@@ -15,4 +15,9 @@
 
   system.stateVersion = "25.11";
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.mafyuh = import ./home.nix;
+  };
 }
