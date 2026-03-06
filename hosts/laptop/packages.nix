@@ -1,4 +1,16 @@
 { pkgs, ... }: {
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = false;
+    gamescopeSession.enable = true;
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+  };
   environment.systemPackages = with pkgs; [
     btop
     docker
@@ -11,7 +23,6 @@
 
   home-manager.users.mafyuh.home.packages = with pkgs; [
     wget
-    steam
     freelens-bin
     kubernetes-helm
     kubectl
