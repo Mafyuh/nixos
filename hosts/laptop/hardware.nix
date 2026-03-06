@@ -4,10 +4,6 @@
   hardware.enableRedistributableFirmware = true;
 
   hardware.graphics.extraPackages = with pkgs; [
-    amdvlk
     rocmPackages.clr.icd
-  ];
-  hardware.graphics.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
   ];
 }
