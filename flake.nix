@@ -34,10 +34,16 @@
         specialArgs = { inherit inputs; };
         modules = [ ./common/default.nix inputs.sops-nix.nixosModules.sops ] ++ modules;
       };
+      wslConfig = { modules ? [] }: nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [ ./common/nix.nix ./common/packages.nix ./common/users.nix inputs.home-manager.nixosModules.home-manager ] ++ modules;
+      };
     in {
     nixosConfigurations = {
         template = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko inputs.home-manager.nixosModules.home-manager ./hosts/template/disk-config.nix ./hosts/template/default.nix ]; };
         laptop = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko inputs.home-manager.nixosModules.home-manager ./hosts/laptop/disk-config.nix ./hosts/laptop/default.nix ]; };
+        wsl = wslConfig { modules = [ inputs.comin.nixosModules.comin ./hosts/wsl/default.nix ]; };
       };
     devShells = forAllSystems (pkgs: {
         default = pkgs.mkShell {
