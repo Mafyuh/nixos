@@ -23,6 +23,7 @@
 
   home-manager.users.mafyuh.home.packages = with pkgs; [
     wget
+    terraform
     freelens-bin
     kubernetes-helm
     kubectl
