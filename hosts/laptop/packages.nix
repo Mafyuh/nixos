@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-unstable, ... }: {
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -29,8 +29,8 @@
     kubectl
     fluxcd
     termius
-    vscode
-    brave
+    pkgs-unstable.vscode
+    pkgs-unstable.brave
     bottles
     unityhub
     pay-respects

@@ -31,7 +31,13 @@
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
       nixosConfig = { modules ? [] }: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import inputs.nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
         modules = [ ./common/default.nix inputs.sops-nix.nixosModules.sops ] ++ modules;
       };
       wslConfig = { modules ? [] }: nixpkgs.lib.nixosSystem {
