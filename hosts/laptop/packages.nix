@@ -15,6 +15,7 @@
     btop
     docker
     tlp
+    dmidecode
   ];
 
   fonts.packages = with pkgs; [
