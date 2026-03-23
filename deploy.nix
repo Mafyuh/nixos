@@ -24,5 +24,10 @@ in
       hostname = "10.0.0.95";
       sshOpts = [ "-i" "/home/mafyuh/.ssh/id_ed25519" ];
     };
+    racknerd-vps = deployConfig "racknerd-vps" "x86_64-linux" {
+      remoteBuild = true;
+      hostname = "racknerd.mafyuh.com";
+      sshOpts = [ "-i" "/home/mafyuh/.ssh/id_ed25519" ];
+    };
   };
 }
