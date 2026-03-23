@@ -1,6 +1,9 @@
 { ... }: {
   networking.hostName = "racknerd-vps";
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = false;
+  networking.useNetworkd = true;
+  networking.useDHCP = true;
+
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
