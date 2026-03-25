@@ -29,7 +29,7 @@
     kubernetes-helm
     kubectl
     fluxcd
-    termius
+    pkgs-unstable.termius
     pkgs-unstable.vscode
     pkgs-unstable.brave
     bottles
