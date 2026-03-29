@@ -20,4 +20,8 @@
     useUserPackages = true;
     users.mafyuh = import ./home.nix;
   };
+
+  services.tailscale = {
+    enable = true;
+  };
 }
