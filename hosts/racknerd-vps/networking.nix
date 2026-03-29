@@ -15,5 +15,5 @@
 
   services.tailscale = {
     enable = true;
-  }
+  };
 }
