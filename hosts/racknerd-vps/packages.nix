@@ -4,10 +4,4 @@
     docker_29
     lazydocker
   ];
-
-  services.cloudflare-warp = {
-    enable = true;
-    openFirewall = true;
-    package = pkgs-unstable.cloudflare-warp;
- };
 }

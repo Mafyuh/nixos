@@ -12,4 +12,7 @@
       443
     ];
   };
+
+  services.tailscale = {
+    enable = true;
 }
