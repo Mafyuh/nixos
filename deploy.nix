@@ -29,5 +29,10 @@ in
       hostname = "racknerd.mafyuh.com";
       sshOpts = [ "-i" "/home/mafyuh/.ssh/id_ed25519" ];
     };
+    main = deployConfig "main" "x86_64-linux" {
+      remoteBuild = true;
+      hostname = "10.0.0.35";
+      sshOpts = [ "-i" "/home/mafyuh/.ssh/id_ed25519" ];
+    };
   };
 }

@@ -2,7 +2,7 @@
   imports = [
     ./boot.nix
     ./hardware.nix
-    # ./desktop.nix
+    ./desktop.nix
     ./packages.nix
   ];
 
