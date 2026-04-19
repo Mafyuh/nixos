@@ -22,6 +22,9 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ip-whitelist = {
+      url = "github:Mafyuh/nixos-ip-whitelist-firewall";
+    };
   };
 
   outputs =
@@ -50,7 +53,7 @@
         template = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko inputs.home-manager.nixosModules.home-manager ./hosts/template/disk-config.nix ./hosts/template/default.nix ]; };
         laptop = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko inputs.home-manager.nixosModules.home-manager ./hosts/laptop/disk-config.nix ./hosts/laptop/default.nix ]; };
         main = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko inputs.home-manager.nixosModules.home-manager ./hosts/main/disk-config.nix ./hosts/main/default.nix ]; };
-        racknerd-vps = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko inputs.home-manager.nixosModules.home-manager ./hosts/racknerd-vps/disk-config.nix ./hosts/racknerd-vps/default.nix ]; };
+        racknerd-vps = nixosConfig { modules = [ inputs.comin.nixosModules.comin inputs.disko.nixosModules.disko inputs.home-manager.nixosModules.home-manager inputs.ip-whitelist.nixosModules.default ./hosts/racknerd-vps/disk-config.nix ./hosts/racknerd-vps/default.nix ]; };
         wsl = wslConfig { modules = [ inputs.comin.nixosModules.comin ./hosts/wsl/default.nix ]; };
       };
     devShells = forAllSystems (pkgs: {

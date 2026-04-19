@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   networking.hostName = "racknerd-vps";
   networking.networkmanager.enable = false;
   networking.useNetworkd = true;
@@ -8,14 +8,28 @@
     "9.9.9.9"
   ];
 
+  sops.secrets.ssh_allowed_ipv4 = {
+    sopsFile = ../../secrets/racknerd-vps.yaml;
+  };
+
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      22
       80
       443
     ];
   };
+
+  networking.firewall.ipBasedAllowedTCPPorts = [
+    {
+      port = 22;
+      ipFiles = [ config.sops.secrets.ssh_allowed_ipv4.path ];
+    }
+    {
+      port = 81;
+      ipFiles = [ config.sops.secrets.ssh_allowed_ipv4.path ];
+    }
+  ];
 
   services.tailscale = {
     enable = true;
