@@ -211,11 +211,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1776613874,
-        "narHash": "sha256-QjJRq82ND/2sFxmzblPibJA66YgZ65SXHjHPSDZEX1U=",
+        "lastModified": 1776614800,
+        "narHash": "sha256-IWwIsct2nEuHCH1DaMfzz/FfGtH7be5eSKQktYLmBCI=",
         "owner": "Mafyuh",
         "repo": "nixos-ip-whitelist-firewall",
-        "rev": "39d68b21e755c2240f419441bcfcce0d139e25b6",
+        "rev": "9b031cc2cf75c7ccb0366a5155bd62aa3d190bc5",
         "type": "github"
       },
       "original": {
