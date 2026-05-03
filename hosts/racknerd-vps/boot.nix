@@ -11,4 +11,5 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = false;
   boot.loader.systemd-boot.enable = false;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
