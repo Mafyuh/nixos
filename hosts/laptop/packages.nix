@@ -30,6 +30,7 @@
     kubectl
     fluxcd
     pkgs-unstable.termius
+    pkgs-unstable.k9s
     pkgs-unstable.vscode
     pkgs-unstable.brave
     bottles
