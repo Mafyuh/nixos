@@ -3,5 +3,6 @@
     btop
     docker_29
     lazydocker
+    python315
   ];
 }
