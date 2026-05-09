@@ -29,6 +29,10 @@
       port = 81;
       ipFiles = [ config.sops.secrets.ssh_allowed_ipv4.path ];
     }
+    {
+      port = 4243;
+      ipFiles = [ config.sops.secrets.ssh_allowed_ipv4.path ];
+    }
   ];
 
   services.tailscale = {
