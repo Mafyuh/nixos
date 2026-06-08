@@ -41,5 +41,6 @@
     nerd-fonts.fira-code
     kdePackages.plasma-browser-integration
     yadm
+    vlc
   ];
 }
