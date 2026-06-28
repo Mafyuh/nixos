@@ -29,6 +29,7 @@
     kubernetes-helm
     kubectl
     fluxcd
+    pkgs-unstable.codex
     pkgs-unstable.termius
     pkgs-unstable.k9s
     pkgs-unstable.vscode
